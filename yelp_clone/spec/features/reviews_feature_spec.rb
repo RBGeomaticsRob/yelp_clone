@@ -13,4 +13,13 @@ feature 'reviewing' do
     expect(current_path).to eq '/restaurants'
     expect(page).to have_content('so so')
   end
+
+  let!(:mcd) { Restaurant.create(name: 'McDonalds') }
+
+  scenario 'remove gets remove when restaurant is destroyed' do
+    mcd.reviews.create(thoughts: 'ok', rating: 4)
+    mcdonalds = Restaurant.find_by(name: 'McDonalds')
+    mcdonalds.destroy
+    expect(Review.find_by(thoughts: 'ok')).to be_nil
+  end
 end
