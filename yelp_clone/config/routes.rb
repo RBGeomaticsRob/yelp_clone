@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   # get 'restaurants' => 'restaurants#index'
   resources :restaurants do
-    resources :reviews
+    resources :reviews do
+      resources :endorsements
+    end
   end
 
   root to: "restaurants#index"
