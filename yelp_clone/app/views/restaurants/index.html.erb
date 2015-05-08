@@ -10,8 +10,9 @@
       <ul>
         <% restaurant.reviews.each do |review| %>
           <li>
+            <span class="endorsements_count"> <%= review.endorsements.count %> </span>
+            <%= link_to "Endorse", restaurant_review_endorsements_path(restaurant, review), class: 'endorsements-link', method: :post%>
             <%= review.thoughts %>, <strong><%= review.rating %></strong>/5
-            <%= pluralize(review.endorsements.count, 'endorsement') %>
           </li>
         <% end %>
       </ul>
