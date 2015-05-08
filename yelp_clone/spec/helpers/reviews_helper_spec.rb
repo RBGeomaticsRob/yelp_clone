@@ -23,5 +23,9 @@ RSpec.describe ReviewsHelper, type: :helper do
     it 'returns three black stars and two white stars for 3' do
       expect(helper.star_rating(3)).to eq '★★★☆☆'
     end
+
+    it 'returns four black stars and one white star 3.5' do
+      expect(helper.star_rating(3.5)).to eq '★★★★☆'
+    end
   end
 end
